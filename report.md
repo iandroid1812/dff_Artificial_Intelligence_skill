@@ -61,7 +61,31 @@ start anew, do I need to create additional flow to implement this?
 
 
 # Week 2
-....
+
+TODO:
+- Create more skills for home assistant that can interact with the home devices and act upon predetermined scenarios
+- Create a Q&A chat about home assistant functionality and features:
+  - User asks "Can you do ..." and gets information about possible commands to the assistant.
+
+WIP:
+- Adding more device types to the Home Assistant config file (radiators, fans)
+   
+Done:
+- Light flow is created
+- Added another annotator for the light's skill that determines user intent of either turning on/off the lights.
+- light_groups.yaml file is created that stores all the lights grouped up by each room with its current state/brightness.
+- Created helper function for light's manipulation in the yaml file that writes the state of the lights into this
+file or updating the brightness of the dimmable lights as well.
+- Weather request function optimized
+- Updated requirements to contain yaml library to work with this file format
+- Test file is updated to have new light flow
+- Condition functions simplified
+
+Issues:
+- After initializing the run_interactive.py it sends multiple requests using OpenWeather API, need to fix this,
+because in some cases it results in an error.
+- Still have issues with label.py file, need to schedule a 1 on 1 to ask th question about it's functionality.
+
 
 # Week 3
 ....

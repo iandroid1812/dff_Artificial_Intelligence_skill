@@ -1,0 +1,25 @@
+- platform: group
+  name: Hall Lights
+  entities:
+  - light.hall: on
+
+- platform: group
+  name: Living Room Lights
+  entities:
+  - light.lr1: off
+  - light.lr2: off
+  - light.lr3: off
+  - light.lr4: off
+
+- platform: group
+  name: Kitchen Lights
+  entities:
+  - light.k1: on
+  - light.k2: on
+
+- platform: group
+  name: Bedroom Lights
+  entities:
+  - light.b1: on
+  - light.b2: on
+  - light.dimmable_lamp: 100

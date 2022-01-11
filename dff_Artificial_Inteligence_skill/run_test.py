@@ -7,7 +7,7 @@ import run_interactive
 random.seed(314)
 
 # testing
-data = weather_forecast_request() | (weather_forecast_request(extra=True))
+data = weather_forecast_request()
 degree = u'\N{DEGREE SIGN}'
 
 testing_dialog = [
@@ -24,7 +24,10 @@ testing_dialog = [
      ),
     ("Great, thank you!",
      "Glad I could help!"),
-    ("", None), # end of convo 1
+
+    # end of convo 1
+    ("", None),
+
     ("HEY",
      "Hello, I am your Home Assistant. How can I help?"
      ),
@@ -33,7 +36,22 @@ testing_dialog = [
      "\nDo you want to get more information?"
      ),
     ("Nope",
-     "Ok, that's it for the weather then.")
+     "Ok, that's it for the weather then."),
+
+    # end of convo 2
+    ("", None),
+
+    ("Hello",
+     "Hello, I am your Home Assistant. How can I help?"
+     ),
+    ("Turn on the lights please.",
+     "Ok, in which room?"),
+    ("In the garage",
+     "Ok, in which room?"),
+    ("The bedroom",
+     "Turned on the lights in the bedroom"),
+    ("Good job",
+     "Glad I could help!")
 ]
 
 

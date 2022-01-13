@@ -14,12 +14,12 @@
 - platform: group
   name: Kitchen Lights
   entities:
-  - light.k1: on
-  - light.k2: on
+  - light.k1: off
+  - light.k2: off
 
 - platform: group
   name: Bedroom Lights
   entities:
   - light.b1: on
   - light.b2: on
-  - light.dimmable_lamp: 100
+  - light.dimmable_lamp: 25

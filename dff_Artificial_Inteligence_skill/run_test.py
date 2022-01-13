@@ -39,7 +39,7 @@ testing_dialog = [
      "Ok, that's it for the weather then."),
 
     # end of convo 2
-    ("", None),
+    ("", "Awaiting for commands..."),
 
     ("Hello",
      "Hello, I am your Home Assistant. How can I help?"
@@ -50,16 +50,33 @@ testing_dialog = [
      "Ok, in which room?"),
     ("The bedroom",
      "Turned on the lights in the bedroom"),
+    ("",
+     "Do you want to dim the light as well?"),
+    ("ok",
+     "What brightness do you want?"),
+    ("Let's dim to 25%",
+     "Dimmed the light in the bedroom to 25%"),
     ("Good job",
-     "Glad I could help!")
+     "Glad I could help!"),
+
+    # end of convo 3
+    ("", "Awaiting for commands..."),
+
+    ("Hello",
+     "Hello, I am your Home Assistant. How can I help?"),
+    ("Please set the temperature to 29 degreed in the hall.",
+     "Set the temperature in the hall to 29 degrees"),
+    ("good job",
+     "Glad I could help!"),
+
+    # end of convo 4
+    ("", "Awaiting for commands...")
 ]
 
 
 def run_test():
     ctx = {}
     for in_request, true_out_response in testing_dialog:
-        if (in_request == "") & (true_out_response is None):
-            ctx = {} # resets the context for next convo
         _, ctx = run_interactive.turn_handler(in_request, ctx, actor, true_out_response=true_out_response)
     print("test passed")
 

@@ -88,7 +88,26 @@ because in some cases it results in an error.
 
 
 # Week 3
-....
+TODO:
+- Need to implement a second version of translator
+- Still working on Q&A
+
+WIP:
+- Implementing a working translator from english to russian and vice versa for multilingual support
+   
+Done:
+- rearranged previous intent annotators by groups, added new ones
+- added dimmable light support and climate device support to helper functions
+- added config files for climate devices and temperature sensors
+- updated run_test.py
+- multiple new conditions implemented
+- climate_flow and dim_flow added to the plot
+- new responses and a little rework on the previous ones
+
+Issues:
+- After initializing the run_interactive.py it sends multiple requests using OpenWeather API, need to fix this,
+because in some cases it results in an error.
+- Could not implement a reliable translator
 
 # Week 4
 ....

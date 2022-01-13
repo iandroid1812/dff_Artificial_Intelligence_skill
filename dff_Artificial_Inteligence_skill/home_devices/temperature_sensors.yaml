@@ -1,0 +1,15 @@
+- name: Kitchen sensor
+  device.id: k.wireless_sensor
+  temperature: 23
+
+- name: Hall sensor
+  device.id: h.wired_sensor
+  temperature: 20
+
+- name: Living Room sensor
+  device.id: lr.wireless_sensor
+  temperature: 25
+
+- name: Bedroom sensor
+  device.id: b.wireless_sensor
+  temperature: 28

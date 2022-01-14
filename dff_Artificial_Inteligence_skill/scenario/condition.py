@@ -1,6 +1,3 @@
-# for conditions
-# TODO: add conditions
-
 import logging
 import re
 from deep_translator import GoogleTranslator as Translator
@@ -9,18 +6,6 @@ from helper_functions.home_devices_manipulations import dimmable_lights_manipula
 from helper_functions.translator import translate
 
 logger = logging.getLogger(__name__)
-
-
-def request_translate(ctx: Context) -> str:
-    request = ctx.last_request
-    current_lang = ctx.misc.get('lang')
-
-    if current_lang == 'RUS':
-        translator = Translator(target='en')
-        translation = translator.translate(request)
-        return translation
-    return request
-
 
 # re patterns for the functions below
 weather_pattern = re.compile(r'(what|\btell\b).*\bweather\b', re.I)

@@ -1,7 +1,7 @@
 from deep_translator import GoogleTranslator as Translator
 
 
-def translate(lang: str, string: str, option=None, log=True) -> str:
+def translate(lang: str, string: str, option=None, log=False) -> str:
     if string == '':
         return ''
 

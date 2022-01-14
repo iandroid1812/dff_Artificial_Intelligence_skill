@@ -1,22 +1,9 @@
-# for responses
-# TODO: add responses
-
-import re
 from df_engine.core import Actor, Context
 from deep_translator import GoogleTranslator as Translator
 from helper_functions.requesting import weather_forecast_request
 from helper_functions.translator import translate
 from helper_functions.home_devices_manipulations import lights_manipulations, \
     dimmable_lights_manipulations, set_the_temp, heat_cool_the_temp
-
-
-def response_translate(ctx: Context, response: str) -> str:
-    current_lang = ctx.misc.get('lang')
-    if current_lang == 'RUS':
-        translator = Translator(target='ru')
-        translation = translator.translate(response)
-        return translation
-    return response
 
 
 def awaiting(ctx: Context, actor: Actor, *args, **kwargs) -> str:

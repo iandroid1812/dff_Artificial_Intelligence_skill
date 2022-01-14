@@ -1,7 +1,7 @@
 - platform: group
   name: Hall Lights
   entities:
-  - light.hall: on
+  - light.hall: off
 
 - platform: group
   name: Living Room Lights
@@ -14,8 +14,8 @@
 - platform: group
   name: Kitchen Lights
   entities:
-  - light.k1: off
-  - light.k2: off
+  - light.k1: on
+  - light.k2: on
 
 - platform: group
   name: Bedroom Lights

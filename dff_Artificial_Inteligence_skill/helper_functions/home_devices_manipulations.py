@@ -61,7 +61,7 @@ def set_the_temp(todo: int, room: str):
             yaml.dump(data, f)
 
 
-def heat_up_the_temp(room: str):
+def heat_cool_the_temp(todo: str, room: str):
     with open('home_devices/climate_group.yaml') as f1:
         data = yaml.load(f1)
     with open('home_devices/temperature_sensors.yaml') as f2:
@@ -80,11 +80,11 @@ def heat_up_the_temp(room: str):
         if bool(re.compile(room, re.I).search(group['name'])):
             for temp in group['entities']:
                 key = list(temp.keys())[0]
-                temp[key] = cur_temp + 10
+                temp[key] = cur_temp + 10 if todo == "heat" else cur_temp - 10
                 changes = True
 
     if changes:
         with open('home_devices/climate_group.yaml', 'w') as f:
             yaml.dump(data, f)
 
-    return cur_temp + 10
+    return cur_temp + 10 if todo == "heat" else cur_temp - 10

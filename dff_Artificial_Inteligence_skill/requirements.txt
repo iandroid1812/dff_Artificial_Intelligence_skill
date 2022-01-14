@@ -2,4 +2,4 @@ df_engine==0.8.1
 nltk==3.5
 pyyaml==6.0
 ruamel.yaml==0.17.20
-googletrans==3.0.0
+deep-translator==1.6.1

@@ -1,7 +1,7 @@
 import df_engine.conditions as cnd
 import df_engine.labels as lbl
 from df_engine.core import Actor
-from df_engine.core.keywords import LOCAL, RESPONSE, TRANSITIONS
+from df_engine.core.keywords import RESPONSE, TRANSITIONS
 
 import scenario.condition as loc_cnd
 import scenario.response as rsp
@@ -10,29 +10,40 @@ import scenario.response as rsp
 plot = {
     "service_flow": {
         "start_node": {
-            RESPONSE: "Awaiting for commands...",
+            RESPONSE: rsp.awaiting,
             TRANSITIONS: {
+                ("language_change", "node1"): loc_cnd.lang_condition,
                 ("greeting_flow", "node1"): loc_cnd.greeting_condition,
                 ("weather_flow", "basic"): loc_cnd.weather_condition,
                 ("light_flow", "room"): loc_cnd.light_condition,
                 ("dim_flow", "node1"): loc_cnd.dim_condition,
                 ("climate_flow", "set_temperature"): loc_cnd.setting_temp_condition,
-                ("climate_flow", "heat_up"): loc_cnd.heating_condition
+                ("climate_flow", "heat_up"): loc_cnd.heating_condition,
+                ("climate_flow", "cool_down"): loc_cnd.cooling_condition
             }
         },
         "fallback_node": {
-            RESPONSE: "I didn't quite catch that, can you repeat please?",
+            RESPONSE: rsp.fallback, # issue
+        }
+    },
+    "language_change": {
+        "node1": {
+            RESPONSE: rsp.language_change,
+            TRANSITIONS: {
+                ("service_flow", "start_node"): cnd.true()
+            }
         }
     },
     "greeting_flow": {
         "node1": {
-            RESPONSE: "Hello, I am your Home Assistant. How can I help?",
+            RESPONSE: rsp.greet,
             TRANSITIONS: {
                 ("weather_flow", "basic"): loc_cnd.weather_condition,
                 ("light_flow", "room"): loc_cnd.light_condition,
                 ("dim_flow", "node1"): loc_cnd.dim_condition,
                 ("climate_flow", "set_temperature"): loc_cnd.setting_temp_condition,
-                ("climate_flow", "heat_up"): loc_cnd.heating_condition
+                ("climate_flow", "heat_up"): loc_cnd.heating_condition,
+                ("climate_flow", "cool_down"): loc_cnd.cooling_condition
             }
         }
     },
@@ -51,7 +62,7 @@ plot = {
             }
         },
         "negative_node": {
-            RESPONSE: "Ok, that's it for the weather then.",
+            RESPONSE: rsp.negative_weather,
             TRANSITIONS: {
                 ("service_flow", "start_node"): cnd.true()
             }
@@ -59,7 +70,7 @@ plot = {
     },
     "light_flow": {
         "room": {
-            RESPONSE: "Ok, in which room?",
+            RESPONSE: rsp.which_room,
             TRANSITIONS: {
                 ("light_flow", "node2"): loc_cnd.room_condition,
                 lbl.repeat(): cnd.true()
@@ -68,11 +79,11 @@ plot = {
         "node2": {
             RESPONSE: rsp.light_response,
             TRANSITIONS: {
-                lbl.forward(): loc_cnd.check_dimmable,
+                lbl.forward(): loc_cnd.check_dimmable, # issue
             }
         },
         "node3": {
-            RESPONSE: "Do you want to dim the light as well?",
+            RESPONSE: rsp.want_dim,
             TRANSITIONS: {
                 ("dim_flow", "node2"): loc_cnd.condition_yes
             }
@@ -80,14 +91,14 @@ plot = {
     },
     "dim_flow": {
         "node1": {
-            RESPONSE: "Alright, in which room do I need to dim the light?",
+            RESPONSE: rsp.which_dim,
             TRANSITIONS: {
                 ("dim_flow", "node2"): loc_cnd.check_dimmable,
                 ("dim_flow", "not_available"): cnd.true()
             }
         },
         "node2": {
-            RESPONSE: "What brightness do you want?",
+            RESPONSE: rsp.brightness,
             TRANSITIONS: {
                 ("dim_flow", "dim_execution"): loc_cnd.get_brightness,
                 lbl.repeat(): cnd.true()
@@ -111,19 +122,28 @@ plot = {
         "set_temperature": {
             RESPONSE: rsp.temperature_setting,
             TRANSITIONS: {
-                ("appreciation_flow", "node1"): loc_cnd.appreciate_condition
+                ("appreciation_flow", "node1"): loc_cnd.appreciate_condition,
+                ("service_flow", "start_node"): cnd.true()
             }
         },
         "heat_up": {
             RESPONSE: rsp.heating_up,
             TRANSITIONS: {
-                ("appreciation_flow", "node1"): loc_cnd.appreciate_condition
+                ("appreciation_flow", "node1"): loc_cnd.appreciate_condition,
+                ("service_flow", "start_node"): cnd.true()
+            }
+        },
+        "cool_down": {
+            RESPONSE: rsp.cooling_down,
+            TRANSITIONS: {
+                ("appreciation_flow", "node1"): loc_cnd.appreciate_condition,
+                ("service_flow", "start_node"): cnd.true()
             }
         }
     },
     "appreciation_flow": {
         "node1": {
-            RESPONSE: "Glad I could help!",
+            RESPONSE: rsp.appreciate,
             TRANSITIONS: {
                 ("service_flow", "start_node"): cnd.true()
             }

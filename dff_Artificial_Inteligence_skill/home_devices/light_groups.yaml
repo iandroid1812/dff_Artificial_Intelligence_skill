@@ -6,16 +6,16 @@
 - platform: group
   name: Living Room Lights
   entities:
-  - light.lr1: off
-  - light.lr2: off
-  - light.lr3: off
-  - light.lr4: off
+  - light.lr1: on
+  - light.lr2: on
+  - light.lr3: on
+  - light.lr4: on
 
 - platform: group
   name: Kitchen Lights
   entities:
-  - light.k1: on
-  - light.k2: on
+  - light.k1: off
+  - light.k2: off
 
 - platform: group
   name: Bedroom Lights

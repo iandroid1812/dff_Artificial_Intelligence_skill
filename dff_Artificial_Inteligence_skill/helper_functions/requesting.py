@@ -1,12 +1,13 @@
 import requests
+from decouple import config
 
 # API key for Open Weather service
-api_key_ow = "7acc0460a154cd92d4d98acfe6831f97"
+api_key = config('OPEN_WEATHER')
 current_location = "Moscow"
 
 
 def weather_forecast_request():
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={current_location}&units=metric&appid={api_key_ow}"
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={current_location}&units=metric&appid={api_key}"
     response = requests.get(url)
     if response.status_code != 200:
         return dict()

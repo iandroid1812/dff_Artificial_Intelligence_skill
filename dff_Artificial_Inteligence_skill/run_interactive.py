@@ -1,18 +1,16 @@
 #!/usr/bin/env python
-
 import time
 from typing import Optional, Union
-
 from scenario.main import actor
 from df_engine.core import Actor, Context
 from annotators.main import annotate
 
 
 def turn_handler(
-    in_request: str,
-    ctx: Union[Context, str, dict],
-    actor: Actor,
-    true_out_response: Optional[str] = None,
+        in_request: str,
+        ctx: Union[Context, str, dict],
+        actor: Actor,
+        true_out_response: Optional[str] = None
 ):
     # Context.cast - gets an object type of [Context, str, dict] returns an object type of Context
     ctx = Context.cast(ctx)
@@ -21,7 +19,7 @@ def turn_handler(
     ctx.add_request(in_request)
     ctx = annotate(ctx)
 
-    # pass the context into actor and it returns updated context with actor response
+    # pass the context into actor, and it returns updated context with actor response
     ctx = actor(ctx)
     # get last actor response from the context
     out_response = ctx.last_response

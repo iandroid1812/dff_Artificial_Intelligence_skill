@@ -84,7 +84,7 @@ file or updating the brightness of the dimmable lights as well.
 Issues:
 - After initializing the run_interactive.py it sends multiple requests using OpenWeather API, need to fix this,
 because in some cases it results in an error.
-- Still have issues with label.py file, need to schedule a 1 on 1 to ask th question about it's functionality.
+- Still have issues with label.py file, need to schedule a 1 on 1 to ask th question about its functionality.
 
 
 # Week 3
@@ -110,4 +110,31 @@ because in some cases it results in an error.
 - Could not implement a reliable translator
 
 # Week 4
-....
+Done:
+- added functionality to automatically reset ctx upon returning to starting node in basic.py
+- added home_presence context in basic.py so the bot can distinct between user coming into house and getting away
+- changes in helper_functions.home_devices.manipulations:
+  - added heat_floor function
+  - little changes to existing functions
+- weather api_key is now stored as an .env file in the root of the project
+- simple_Q&A added to helper_functions
+- fixed a bug in translator function (had zero width whitespaces in some translations)
+- run_test.py remade to store and compile the dialogues in helper_functions.test_prepare
+- translator implemented for russian language
+- TTS implemented for home assistant responses in both languages
+- added multiple new conditions
+- implemented previous_fallback in label.py to have additional functionality (return to the node 
+before we went to the fallback node)
+- remade scenario.main:
+  - added more global transitions to get rid of unnecessary transitions from every end node in each flow
+  - added new flow (home_presence)
+  - made use of priority labels for transitions between nodes
+  - added ability to stop conversation at any time
+  - added ability to enable/disable TTS at the start node
+- response.py remade:
+  - added structure for easy viewing
+  - moved some responses into main one
+  - added new responses for new features
+
+WIP:
+- working on readme.md to add instructions before release

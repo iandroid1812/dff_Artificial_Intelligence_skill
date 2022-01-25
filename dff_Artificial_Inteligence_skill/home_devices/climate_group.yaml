@@ -1,13 +1,13 @@
 - platform: group
   name: Living Room climate
   entities:
-  - heat.wall_radiator_lr: 0
-  - heat.floor_convector_lr: 0
+  - heat.wall_radiator_lr: 22
+  - heat.floor_convector_lr: 22
 
 - platform: group
   name: Kitchen climate
   entities:
-  - heat.wall_radiator_k: 33
+  - heat.wall_radiator_k: 25
 
 - platform: group
   name: Hall
@@ -17,5 +17,5 @@
 - platform: group
   name: Bedroom
   entities:
-  - heat.wall_radiator: 18
-  - combined.air_conditioner: 18
+  - heat.wall_radiator: 25
+  - combined.air_conditioner: 25

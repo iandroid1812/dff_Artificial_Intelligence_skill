@@ -1,5 +1,7 @@
 df_engine==0.8.1
-nltk==3.5
 pyyaml==6.0
 ruamel.yaml==0.17.20
 deep-translator==1.6.1
+gTTS==2.2.3
+pyglet==1.5.21
+python-decouple==3.5

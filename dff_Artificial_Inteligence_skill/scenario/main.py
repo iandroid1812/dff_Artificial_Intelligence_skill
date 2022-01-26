@@ -40,7 +40,7 @@ plot = {
         "start_node": {
             RESPONSE: rsp.main_response,
             TRANSITIONS: {
-                ("service_flow", "start_node", 2.0): loc_cnd.lang_condition,
+                ("service_flow", "start_node", 2.5): loc_cnd.lang_condition,
                 ("service_flow", "start_node"): loc_cnd.goodbye_condition,
 
                 ("weather_flow", "basic"): loc_cnd.weather_condition,
@@ -210,7 +210,8 @@ plot = {
         "getting_in": {
             RESPONSE: rsp.getting_in,
             TRANSITIONS: {
-                lbl.forward(): loc_cnd.condition_yes
+                lbl.forward(): loc_cnd.condition_yes,
+                lbl.to_start(): loc_cnd.condition_no
             }
         },
         "floor_heat": {

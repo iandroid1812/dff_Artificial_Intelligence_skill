@@ -114,7 +114,7 @@ testing_dialog = [
      "Вы можете сказать «Приглушите свет», «Приглушите свет в спальне».\nЧто-нибудь еще?"),
 
     ("Как менять температуру?",
-     "Чтобы выбрать определенную температуру, скажите «установите температуру 28 градусов в зале».\nЧто-нибудь еще?"),
+     "Чтобы выбрать определенную температуру, скажите «установите температуру 28 градусов в прихожей».\nЧто-нибудь еще?"),
 
     ("Как подогреть помещение?",
      "Вам нужно просто сказать: «Разогрейте кухню».\nЧто-нибудь еще?"),
@@ -128,6 +128,22 @@ testing_dialog = [
 
     ("Начать",
      "жду команды..."),
+
+    # start of convo 9
+    ("Включи английский язык",
+     "Language change successful"),
+
+    ("I want to ask some questions.",
+     "Ok, ask me."),
+
+    ("How to turn on the lamps?",
+     "To control the lights, just say \"Turn off/on the lights\", you can specify the room as well.\nAnything else?"),
+
+    ("It is too hot, I need to cool down",
+     "You need to just say \"Cool down the room\"\nAnything else?"),
+
+    ("stop",
+     "The conversation has been stopped. In order to begin say: 'start'.")
 ]
 
 

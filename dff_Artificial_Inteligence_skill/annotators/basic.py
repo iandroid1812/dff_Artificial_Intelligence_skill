@@ -1,6 +1,6 @@
 import re
 from df_engine.core import Context
-from helper_functions.translator import translate
+from helper_functions.translator_tts import translate
 from helper_functions.home_devices_manipulations import check_dimmable
 
 
@@ -79,12 +79,13 @@ def binary_intent(ctx: Context):
 
 
 def room_intent(ctx: Context):
-    room_pattern = re.compile(r'\bhall\b|\bcorridor\b|\blobby\b|\bliving room\b|\bkitchen\b|\bbedroom\b', re.I)
+    room_pattern = re.compile(r'hall|\bcorridor\b|\blobby\b|\bliving room\b|\bkitchen\b|\bbedroom\b', re.I)
 
     request = ctx.misc['translated']
     room = room_pattern.search(request)
 
     if room:
+        # added corridor and lobby because of similar definitions to 'hall'
         ctx.misc['room'] = room[0] if room[0] not in {'corridor', 'lobby'} else 'hall'
     elif 'room' not in ctx.misc.keys():
         ctx.misc['room'] = None

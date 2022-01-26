@@ -2,12 +2,18 @@ import scenario.condition as loc_cnd
 from annotators.main import annotate
 from df_engine.core import Actor, Context
 from helper_functions.requesting import weather_forecast_request
-from helper_functions.translator import translate, text_to_speech
+from helper_functions.translator_tts import translate, text_to_speech
 from helper_functions.simple_Q_A import q_a_bot
 import helper_functions.home_devices_manipulations as home
 
 
 def main_response(ctx: Context, actor: Actor, *args, **kwargs) -> str:
+    """
+    Checking for multiple conditions inside starting node and returning appropriate responses
+    These conditions/responses are all grouped up in the same function because they do not lead to any other node,
+    and if the condition is met we  still stay at the starting node.
+    We just need to have custom responses for some of them.
+    """
     if loc_cnd.lang_condition(ctx, actor):
         response = "Language change successful"
     elif loc_cnd.appreciate_condition(ctx, actor):
@@ -22,7 +28,9 @@ def main_response(ctx: Context, actor: Actor, *args, **kwargs) -> str:
     else:
         response = "I'm waiting for the command..."
 
+    # translation of the response
     response = translate(ctx.misc.get('lang'), response, option='response')
+    # calling tts to launch audio
     text_to_speech(response, ctx.misc.get('lang'), ctx.validation, ctx.misc.get('tts'))
     return response
 

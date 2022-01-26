@@ -66,6 +66,7 @@ def questioning(ctx: Context, actor: Actor, *args, **kwargs) -> str:
             request = ctx.misc.get('translated') if ctx.misc.get('translated') is not None else ''
             response = q_a_bot(request) + additional
         response = translate(ctx.misc.get('lang'), response, option='response')
+        text_to_speech(response, ctx.misc.get('lang'), ctx.validation, ctx.misc.get('tts'))
         return response
 
 

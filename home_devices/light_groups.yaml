@@ -6,10 +6,10 @@
 - platform: group
   name: Living Room Lights
   entities:
-  - light.lr1: on
-  - light.lr2: on
-  - light.lr3: on
-  - light.lr4: on
+  - light.lr1: off
+  - light.lr2: off
+  - light.lr3: off
+  - light.lr4: off
 
 - platform: group
   name: Kitchen Lights
@@ -20,6 +20,6 @@
 - platform: group
   name: Bedroom Lights
   entities:
-  - light.b1: on
-  - light.b2: on
-  - light.dimmable_lamp: 25
+  - light.b1: off
+  - light.b2: off
+  - light.dimmable_lamp: 0

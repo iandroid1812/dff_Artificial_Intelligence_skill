@@ -94,14 +94,14 @@ def heat_cool_the_temp(room: Optional[str] = None, todo: Optional[str] = None):
         if bool(re.compile(room, re.I).search(group['name'])):
             for temp in group['entities']:
                 key = list(temp.keys())[0]
-                temp[key] = cur_temp + 10 if todo == "heat" else cur_temp - 10
+                temp[key] = cur_temp + 5 if todo == "heat" else cur_temp - 5
                 changes = True
 
     if changes:
         with open('home_devices/climate_group.yaml', 'w') as f:
             yaml.dump(data, f)
 
-    return cur_temp + 10 if todo == "heat" else cur_temp - 10
+    return cur_temp + 5 if todo == "heat" else cur_temp - 5
 
 
 def heat_floor(room: Optional[str] = None):
@@ -114,7 +114,7 @@ def heat_floor(room: Optional[str] = None):
         if bool(re.compile(room, re.I).search(group['name'])):
             for temp in group['entities']:
                 key = list(temp.keys())[0]
-                temp[key] += 20
+                temp[key] = 35
 
     with open('home_devices/climate_group.yaml', 'w') as f:
         yaml.dump(data, f)

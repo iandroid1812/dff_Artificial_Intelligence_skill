@@ -7,7 +7,7 @@
 - platform: group
   name: Kitchen climate
   entities:
-  - heat.wall_radiator_k: 25
+  - heat.wall_radiator_k: 28
 
 - platform: group
   name: Hall
@@ -17,5 +17,5 @@
 - platform: group
   name: Bedroom
   entities:
-  - heat.wall_radiator: 25
-  - combined.air_conditioner: 25
+  - heat.wall_radiator: 38
+  - combined.air_conditioner: 38

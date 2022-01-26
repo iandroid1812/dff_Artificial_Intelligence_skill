@@ -25,7 +25,7 @@ testing function, but it prepares them by adding weather forecast using fstrings
 - **scenario:** `main.py` has plot creation with different dialog flows and rules, as well as actor class creation.
 `condition.py` has everything to check for conditions and has functions returning boolean values that are imported 
 as loc_cnd in `main.py`. `response.py` returns home assistant response as a string as well as calling for translation
-and tts inside each response function, in some of the response functions we also make calls to helper functions in order
+and tts inside each response function, in some response functions we also make calls to helper functions in order
 to control home devices, get weather report. `label.py` has 1 custom label which helps us to reach the node that was the
 last one before encountering the error, thus resuming the progress from where we left off.
 
@@ -63,7 +63,7 @@ if user wants to check the lights and turns it off automatically upon receiving 
 
 ### Cool down the hallway.
 Checks the current temperature in the room using sensors in config file, and sets climate devices in this room 
-to (current temperature - 10 degrees) so it can cool down. Works similarly for "heat up" functionality as well.
+to (current temperature - 5 degrees) so it can cool down. Works similarly for "heat up" functionality as well.
 
 ### Set the temperature to 25 degrees in the living room.
 
@@ -72,12 +72,17 @@ Checks for a weather report, if there were precipitations offers the user to hea
 the arrival, so the clothes/boots/umbrella will dry much faster upon arrival.
 
 ## Quickstart
+Python version used: 3.9.10
+
 ```bash
 pip install -r requirements.txt
 ```
 Run interactive mode
 ```bash
 python run_interactive.py
+
+If you are using terminal there is a possibility to have an error "UnicodeDecodeError: 'utf8' codec can't decode byte...".
+It is caused by extra backspace before command type, so be careful about that.
 ```
 Run tests
 ```bash

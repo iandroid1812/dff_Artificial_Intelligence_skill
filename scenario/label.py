@@ -13,7 +13,6 @@ def previous_fallback(priority: Optional[float] = None, *args, **kwargs) -> Call
 
     Parameters
     -----------
-
     priority: Optional[float] = None
         float priority of transition. Uses `Actor.label_priority` if priority not defined.
     """

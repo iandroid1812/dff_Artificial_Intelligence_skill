@@ -45,6 +45,9 @@ def tts_status(ctx: Context):
     tts_pattern_off = re.compile(r'(\bturn off|disable\b).*(\btts\b)', re.I)
     tts_pattern_on = re.compile(r'(\bturn on|enable\b).*(\btts\b)', re.I)
 
+    if len(ctx.labels) >= 1 and list(ctx.labels.values())[-1] == ('service_flow', 'Q&A'):
+        return ctx
+
     request = ctx.misc['translated']
     ctx.misc['tts'] = ctx.misc['tts'] if 'tts' in ctx.misc else True
     if tts_pattern_off.search(request):

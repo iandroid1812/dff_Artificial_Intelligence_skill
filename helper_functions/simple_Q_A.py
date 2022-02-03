@@ -7,6 +7,7 @@ heating = re.compile(r'(heat)', re.I)
 cooling = re.compile(r'(cool)', re.I)
 lights = re.compile(r'(lamp|light)', re.I)
 dim = re.compile(r'(dim)', re.I)
+tts = re.compile(r'(tts)', re.I)
 
 
 def q_a_bot(request):
@@ -15,6 +16,8 @@ def q_a_bot(request):
                  "\nYou can tell me if you are leaving or coming home to launch certain scenarios."
     elif lang.search(request):
         answer = "To change the language, just type in the required language (russian/english)."
+    elif tts.search(request):
+        answer = "To silence the TTS, you can say \"disable/turn off TTS\", you can re-enable it later."
     elif temperature.search(request):
         answer = "To choose certain temperature, say \"set temperature to 28 degrees in the hall\"."
     elif heating.search(request):

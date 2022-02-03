@@ -62,9 +62,8 @@ def questioning(ctx: Context, actor: Actor, *args, **kwargs) -> str:
         if prev[:2] != ('service_flow', 'Q&A'):
             response = "Ok, ask me."
         else:
-            additional = "\nAnything else?"
             request = ctx.misc.get('translated') if ctx.misc.get('translated') is not None else ''
-            response = q_a_bot(request) + additional
+            response = q_a_bot(request)
         response = translate(ctx.misc.get('lang'), response, option='response')
         text_to_speech(response, ctx.misc.get('lang'), ctx.validation, ctx.misc.get('tts'))
         return response

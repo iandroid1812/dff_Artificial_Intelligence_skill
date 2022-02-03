@@ -137,7 +137,7 @@ plot = {
             RESPONSE: rsp.light_response,
             TRANSITIONS: {
                 ("dim_flow", "brightness", 1.1): cnd.all([loc_cnd.condition_yes, loc_cnd.dimmable_condition]),
-                ("service_flow", "start_node", 1.1): cnd.any([loc_cnd.condition_no, loc_cnd.dimmable_condition]),
+                ("service_flow", "start_node", 1.1): cnd.all([loc_cnd.condition_no, loc_cnd.dimmable_condition]),
                 lbl.to_start(): cnd.any([loc_cnd.condition_no, loc_cnd.condition_yes])
             }
         }
